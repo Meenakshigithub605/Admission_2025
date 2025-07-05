@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>NIMCET Admission Assistance</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <div class="container">
+    <img src="img/logo.png" alt="Club Logo" class="logo" />
+    <h1>NIMCET Admission Assistance</h1>
+    <p class="subtitle">
+      This form is created by <strong>SoftRec Club members</strong> to assist students
+      with their NIMCET admission process. Please fill in your details accurately so we can better support you.
+    </p>
+
+    <form>
+      <label for="name">Name: <span class="required">*</span></label>
+      <input type="text" id="name" name="name" required>
+
+      <label for="whatsapp">Whatsapp No.: <span class="required">*</span></label>
+      <input type="tel" id="whatsapp" name="whatsapp" required>
+
+      <label for="address">Address: <span class="required">*</span></label>
+      <input type="text" id="address" name="address" required placeholder="City, State">
+
+      <label for="rank">NIMCET Rank: <span class="required">*</span></label>
+      <input type="number" id="rank" name="rank" required>
+
+      <label for="prep">Coaching/Self: <span class="required">*</span></label>
+      <select id="prep" name="prep" required onchange="handlePrepChange(this)">
+        <option value="">Select</option>
+        <option value="coaching">Coaching</option>
+        <option value="self">Self</option>
+      </select>
+
+      <div id="coachingField" style="display: none;">
+        <label for="coaching">Coaching Name: <span class="required">*</span></label>
+        <input type="text" id="coaching" name="coaching">
+      </div>
+
+      <label for="allotment">NIT Trichy Allotment Letter (PDF only): <span class="required">*</span></label>
+      <input type="file" id="allotment" name="allotment" accept=".pdf" required>
+
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+</body>
+</html>
