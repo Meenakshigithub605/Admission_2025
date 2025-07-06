@@ -22,9 +22,14 @@ function toBase64(file) {
 
 document.addEventListener('DOMContentLoaded', function () {
   const form = document.querySelector('form');
+  const submitBtn = document.getElementById('submitBtn'); // <-- Referencing the submit button
 
   form.addEventListener('submit', async function (e) {
     e.preventDefault();
+
+    // Disable button and show loading text
+    submitBtn.disabled = true;
+    submitBtn.innerText = 'Submitting...';
 
     const name = document.getElementById('name').value.trim();
     const whatsapp = document.getElementById('whatsapp').value.trim();
@@ -37,27 +42,32 @@ document.addEventListener('DOMContentLoaded', function () {
 
     if (!name || !whatsapp || !address || !rank || !prep || (prep === 'coaching' && !coaching) || !file) {
       alert('All fields are compulsory.');
+      resetButton();
       return;
     }
 
     if (!/^[0-9]{10}$/.test(whatsapp)) {
       alert('Whatsapp No. should be exactly 10 digits.');
+      resetButton();
       return;
     }
 
     const rankNum = Number(rank);
     if (isNaN(rankNum) || rankNum <= 0) {
       alert('Rank should be a positive number.');
+      resetButton();
       return;
     }
 
     if (file.type !== 'application/pdf') {
       alert('Only PDF files are allowed.');
+      resetButton();
       return;
     }
 
     if (file.size > 2 * 1024 * 1024) {
       alert('File size must be under 2MB.');
+      resetButton();
       return;
     }
 
@@ -87,6 +97,7 @@ document.addEventListener('DOMContentLoaded', function () {
       } catch (err) {
         console.error("Error parsing upload response:", err);
         alert("Upload succeeded but no file link was returned.");
+        resetButton();
         return;
       }
 
@@ -112,5 +123,13 @@ document.addEventListener('DOMContentLoaded', function () {
       console.error('Form submission failed:', err);
       alert('There was an error submitting the form.');
     }
+
+    // Always reset button in the end
+    resetButton();
   });
+
+  function resetButton() {
+    submitBtn.disabled = false;
+    submitBtn.innerText = 'Submit';
+  }
 });
