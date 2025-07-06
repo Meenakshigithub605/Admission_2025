@@ -10,7 +10,7 @@
 <body>
   <div class="container">
     <img src="img/logo.png" alt="Club Logo" class="logo" />
-    <h1>NIMCET Admission Assistance</h1>
+    <h1>NITT Admission Assistance</h1>
     <p class="subtitle">
       This form is created by <strong>SoftRec Club members</strong> to assist students
       with their NIMCET admission process. Please fill in your details accurately so we can better support you.
@@ -44,7 +44,13 @@
       <label for="allotment">NIT Trichy Allotment Letter (PDF only): <span class="required">*</span></label>
       <input type="file" id="allotment" name="allotment" accept=".pdf" required>
 
-      <button type="submit">Submit</button>
+      <!-- New Note Message -->
+      <p id="submit-note" style="color: #c0392b; font-size: 0.95em; font-weight: 500; margin-top: 10px;">
+        ⚠️ Please click the submit button only once. Submission may take a few seconds.
+      </p>
+
+      <!-- Updated Submit Button -->
+      <button type="submit" id="submitBtn">Submit</button>
     </form>
   </div>
 </body>
